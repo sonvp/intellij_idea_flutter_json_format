@@ -42,6 +42,7 @@ public class Util {
     }
 
     public static String toLowerCase(String s) {
+
         if (s.isEmpty()) return s;
         else if (s.matches(".*[a-z].*")) {
             return s;
