@@ -88,7 +88,7 @@ class ClazzGenerator(val settings: Settings?) {
         // 输出 toJson 头
         sb.append("\n")
         sb.append("\n")
-        sb.append("$spaceStr  Map toJson() => {")
+        sb.append("$spaceStr  Map<String,dynamic> toJson() => {")
         sb.append("\n")
 
         // 输出数据提取及转换
