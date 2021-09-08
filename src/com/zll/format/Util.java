@@ -44,8 +44,8 @@ public class Util {
     public static String toLowerCase(String s) {
 
         if (s.isEmpty()) return s;
-        else if (s.matches(".*[a-z].*")) {
-            return s;
+        else if (Character.isLowerCase(s.charAt(0))) {
+            return s.toLowerCase();
         }
         return s.toLowerCase();
     }
