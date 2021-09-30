@@ -34,12 +34,17 @@ class UiBuilder(private val project: Project, private val virtualFile: VirtualFi
             setBounds(10, 460, 200, 30)
         }
 
+        val nullSafetyCb = JCheckBox("Null safety", settings.generateNullSafety).apply {
+            setBounds(300, 460, 200, 30)
+        }
+
         add(JButton("ok").apply {
             setBounds(600, 460, 80, 30)
             isVisible = true
             addActionListener {
                 // 保存配置
                 settings.generateComments = commentCb.isSelected
+                settings.generateNullSafety = nullSafetyCb.isSelected
                 settings.save()
 
                 // 开始生成代码
@@ -60,6 +65,7 @@ class UiBuilder(private val project: Project, private val virtualFile: VirtualFi
         })
 
         add(commentCb)
+        add(nullSafetyCb)
         add(tipLabel)
     }
 }

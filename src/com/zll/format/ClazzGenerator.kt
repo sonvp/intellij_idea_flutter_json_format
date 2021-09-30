@@ -68,8 +68,10 @@ class ClazzGenerator(val settings: Settings?) {
         sb.append("\n")
         sb.append("$spaceStr  static ").append(className).append(" fromJson(Map<String, dynamic> map) {")
         sb.append("\n")
-        sb.append("$spaceStr    ").append("if (map == null) return null;")
-        sb.append("\n")
+        if (!Settings().generateNullSafety) {
+            sb.append("$spaceStr    ").append("if (map == null) return null;")
+            sb.append("\n")
+        }
         sb.append("$spaceStr    ").append(className).append(" ").append(clazz.getFieldName()).append(" = ").append(className).append("();")
         sb.append("\n")
 

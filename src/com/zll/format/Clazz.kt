@@ -59,7 +59,7 @@ abstract class Clazz(
         private fun Any.isBoolean() = toString().let { it == "true" || it == "false" }
     }
 
-    fun getStatement() = "${getClassName()} ${getCamelName()};"
+    fun getStatement() = "${getClassName()}${if(Settings().generateNullSafety) "?" else ""} ${getCamelName()};"
     fun getFieldName() = if(getClassName().contains("_")) getClassName().split("_").reduce { acc, s -> "$acc${Util.toUpperCaseFirstOne(s)}" } else Util.toLowerCaseFirstOne(getClassName())
     fun getCamelName() = if(name.contains("_"))name.split("_").reduce { acc, s -> "${Util.toLowerCaseFirstOne(acc)}${Util.toUpperCaseFirstOne(s)}" } else Util.toLowerCase(name)
     fun getComment() = "$name : ${content.toString().replace("\n", "")}"
