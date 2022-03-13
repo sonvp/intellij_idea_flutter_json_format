@@ -42,9 +42,12 @@ public class Util {
     }
 
     public static String toLowerCase(String s) {
+        String camelCasePattern = "([a-z]+[A-Z]+\\w+)+";
 
         if (s.isEmpty()) return s;
-        else if (Character.isLowerCase(s.charAt(0))) {
+        else if(s.matches(camelCasePattern)){
+            return s;
+        } else if (Character.isLowerCase(s.charAt(0))) {
             return s.toLowerCase();
         }
         return s.toLowerCase();
