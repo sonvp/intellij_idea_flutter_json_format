@@ -136,10 +136,15 @@ data class ListClazz(
 
     override fun getAssignments(parent: String): List<String> {
         return if (child == null || child is EmptyClazz) listOf("$parent.${getCamelName()} = map['$name'];")
+//        else listOf(
+//            "$parent.${getCamelName()} = List()..addAll(",
+//            "  (map['$name'] as List ?? []).map((o) => ${child.map("o")})",
+//            ");"
+//        )
         else listOf(
-            "$parent.${getCamelName()} = List()..addAll(",
-            "  (map['$name'] as List ?? []).map((o) => ${child.map("o")})",
-            ");"
+            "$parent.${getCamelName()} = [",
+            "  ...((map['$name'] ?? []) as List).map((o) => ${child.map("o")})",
+            "];"
         )
     }
 }
