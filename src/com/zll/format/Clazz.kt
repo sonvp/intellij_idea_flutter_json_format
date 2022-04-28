@@ -143,7 +143,7 @@ data class ListClazz(
 //        )
         else listOf(
             "$parent.${getCamelName()} = [",
-            "  ...((map['$name'] ?? []) as List).map((o) => ${child.map("o")})",
+            "  ...((map['$name'] ?? []) as List).map((o) => ${child.map("o")}${if(Settings().generateNullSafety)"!" else ""})",
             "];"
         )
     }
